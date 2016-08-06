@@ -3,10 +3,10 @@
 
 #include "util.h"
 
+#include <ESP8266_new_pwm/pwm.h>
 #include <user_interface.h>
 #include <osapi.h>
 #include <gpio.h>
-#include <pwm.h>
 #include <ets_sys.h>
 
 #include <stdlib.h>
@@ -49,7 +49,7 @@ typedef union
 
 static struct
 {
-	unsigned int pwm_subsystem_active:1;
+	unsigned int pwm_subsystem_active:1; // FIXME
 	unsigned int counter_triggered:1;
 } gpio_flags;
 
@@ -164,7 +164,7 @@ irom io_error_t io_gpio_init(const struct io_info_entry_T *info)
 
 	if(pwmchannel > 0)
 	{
-		pwm_init(3000, pwm_duty, pwmchannel, pwm_io_info);
+		pwm_init(65536, pwm_duty, pwmchannel, pwm_io_info);
 		gpio_flags.pwm_subsystem_active = true;
 	}
 

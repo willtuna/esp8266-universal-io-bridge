@@ -153,11 +153,11 @@ CINC			:= -I$(SDKROOT)/lx106-hal/include -I$(SDKROOT)/xtensa-lx106-elf/xtensa-lx
 					-I$(SDKROOT)/xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr/include \
 					-isystem$(SDKROOT)/sdk/include -I$(RBOOT)/appcode -I$(RBOOT) -I.
 LDFLAGS			:= -L . -L$(SDKLIBDIR) -Wl,--gc-sections -Wl,-Map=$(LINKMAP) -nostdlib -u call_user_start -Wl,-static
-SDKLIBS			:= -lgcc -lhal -lpp -lphy -lnet80211 -llwip -lwpa -lpwm -lcrypto
+SDKLIBS			:= -lgcc -lhal -lpp -lphy -lnet80211 -llwip -lwpa -lcrypto -ldriver
 
 OBJS			:= application.o config.o display.o display_cfa634.o display_lcd.o display_orbital.o display_saa.o http.o \
 						i2c.o i2c_sensor.o io.o io_gpio.o io_aux.o io_mcp.o io_pcf.o queue.o stats.o time.o \
-						uart.o user_main.o util.o
+						uart.o user_main.o util.o ESP8266_new_pwm/pwm.o
 OTA_OBJ			:= rboot-bigflash.o rboot-api.o ota.o
 HEADERS			:= application.h config.h display.h display_cfa634.h display_lcd.h display_orbital.h display_saa.h \
 					esp-uart-register.h http.h i2c.h i2c_sensor.h io.h io_config.h io_gpio.h io_aux.h \
